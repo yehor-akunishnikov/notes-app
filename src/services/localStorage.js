@@ -17,3 +17,7 @@ export const updateItem = (key, newValue) => {
 
     setState(currentState);
 };
+
+export const getItemValue = (itemId) => {
+    return getState()[itemId] ?? '';
+};

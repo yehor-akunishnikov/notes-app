@@ -7,29 +7,26 @@ import {Title} from "./Title/index.js";
 
 export const Notes = () => {
     const {
-        currentNoteText,
-        currentDateString,
-        doStep,
-        currentTimePeriod,
-        updateCurrentNote
+        state,
+        dispatch
     } = useAppState(Date.now());
 
     const formatDate = () => {
-        return new Date(currentDateString).toDateString();
+        return new Date(state.currentDateString).toDateString();
     }
 
     return (<div className={classes.container}>
         <Title/>
         <div className={classes.editorWrapper}>
-            <Controls.BtnPrev doStep={doStep} />
+            <Controls.BtnPrev dispatch={dispatch} />
             <Editor
-                currentNoteText={currentNoteText}
-                updateCurrentNote={updateCurrentNote}
-                currentTimePeriod={currentTimePeriod}
+                currentNoteText={state.currentNoteText}
+                dispatch={dispatch}
+                currentTimePeriod={state.currentTimePeriod}
             />
             <Controls.BtnNext
-                doStep={doStep}
-                currentTimePeriod={currentTimePeriod}
+                dispatch={dispatch}
+                currentTimePeriod={state.currentTimePeriod}
             />
         </div>
         <time>{formatDate()}</time>
