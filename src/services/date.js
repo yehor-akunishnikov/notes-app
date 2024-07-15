@@ -1,5 +1,3 @@
-import * as dateService from "./index.js";
-
 export const goTo = (currentTimestamp, direction) => {
     const currentDate = new Date(currentTimestamp);
 
@@ -15,18 +13,12 @@ export const getTimestamp = (dateString) => {
 };
 
 export const getCurrentTimePeriod = (currentDateString) => {
-    const currentStepTimestamp = dateService.getTimestamp(currentDateString);
-    const currentDayTimestamp = dateService.getTimestamp(
-        dateService.getDateString(Date.now())
-    );
+    const currentStepTimestamp = getTimestamp(currentDateString);
+    const currentDayTimestamp = getTimestamp(getDateString(Date.now()));
 
     if (currentStepTimestamp === currentDayTimestamp) {
         return 0;
     }
 
-    if (currentStepTimestamp > currentDayTimestamp) {
-        return 1;
-    } else {
-        return -1;
-    }
+    return currentStepTimestamp > currentDayTimestamp ? 1 : -1;
 };

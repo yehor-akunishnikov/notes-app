@@ -1,7 +1,7 @@
 import {useMemo, useState} from 'react';
 
-import * as localStorageService from '../services/index.js';
-import * as dateService from '../services/index.js';
+import * as localStorageService from '../services/localStorage.js';
+import * as dateService from '../services/date.js';
 
 export const useAppState = (initialTimestamp) => {
     const [currentDateString, setCurrentDateString] = useState(
